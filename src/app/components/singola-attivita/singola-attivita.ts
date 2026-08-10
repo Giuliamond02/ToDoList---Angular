@@ -15,6 +15,8 @@ export class SingolaAttivita {
   @Output() elimina = new EventEmitter<any>();       // Output per emettere un evento al componente genitore (home) quando si desidera eliminare l'attività,
                                                         // lo faccio perchè il figlio non si deve occupare di rimuovere l'attività, deve solo comunicare al genitore che vuole rimuoverla
                                                         // con any passo l'oggetto dell'attività da eliminare, che il genitore userà per rimuovere l'attività dall'array todos
+  
+  @Input() paginaEliminate = false;   // Input per ricevere il segnale che indica se la pagina corrente è la pagina delle attività eliminate
 
   toggleCheckbox(){                    //funzione per cambiare lo stato della checkbox da selezionata a non selezionata e viceversa
     this.todo.done = !this.todo.done;  // Inverte lo stato della checkbox

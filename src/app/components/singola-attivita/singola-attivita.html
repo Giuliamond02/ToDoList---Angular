@@ -1,4 +1,4 @@
-<li class="bg-gray-100 rounded-lg flex items-center justify-between p-3 m-2 border-b border-gray-300">
+<li class="bg-gray-100 rounded-lg flex items-center p-3 m-2 border-b border-gray-300">
 
     <input
         type="checkbox"
@@ -6,13 +6,18 @@
         [checked]="todo.done"       //serve a legare lo stato del checkbox alla proprietà done del todo corrente
     >
 
-    <span [class.done]="todo.done">
+    <span
+        [class.done]="todo.done"
+        class="flex-1 text-center whitespace-nowrap">
     {{todo.text}}
     </span>
 
-    <button 
-        (click)="rimuoviAttivita()">
-        🗑️
-    </button>
+    @if (!paginaEliminate) {
+        <button 
+            (click)="rimuoviAttivita()"
+            >
+            🗑️
+        </button>
+    }
 
 </li>
