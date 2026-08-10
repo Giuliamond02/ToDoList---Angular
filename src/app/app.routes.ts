@@ -8,5 +8,9 @@ export const routes: Routes = [
     {
         path: 'completate',
         loadComponent: () => import('./pages/completate/completate').then((c) => c.Completate),
+    },
+    {
+        path: 'eliminate',
+        loadComponent: () => import('./pages/eliminate/eliminate').then((c) => c.Eliminate),
     }
 ];

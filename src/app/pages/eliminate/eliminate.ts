@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, signal, inject} from '@angular/core';
+import { TodoService } from '../../todo-service';
+import { SingolaAttivita  } from '../../components/singola-attivita/singola-attivita';
 
 @Component({
   selector: 'app-eliminate',
-  imports: [],
+  imports: [SingolaAttivita],
   templateUrl: './eliminate.html',
   styleUrl: './eliminate.css',
 })
-export class Eliminate {}
+export class Eliminate {
+
+  todoService = inject(TodoService);
+
+}

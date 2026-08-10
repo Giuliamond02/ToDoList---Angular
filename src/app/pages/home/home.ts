@@ -23,15 +23,15 @@ export class Home {
       return;                                       // Se il testo è vuoto o contiene solo spazi bianchi, non aggiungere l'attività
     }
     else {
-      this.todoService.todos.push({ text: testoPulito, done: false });    // Aggiunge l'attività alla lista
+      this.todoService.todos.push({ text: testoPulito, done: false, eliminata: false });    // Aggiunge l'attività alla lista
       this.newTodo.set('');                        // Svuota il campo di input dopo aver aggiunto l'attività
     }
   }
 
   rimuoviAttivita(todo  :any){                           //funzione per rimuovere un'attività dalla lista
   const index = this.todoService.todos.indexOf(todo);    //trova l'indice dell'attività da rimuovere nell'array todos
-  if (index !== -1) {                                     //controlla se l'attività è stata trovata nell'array
-    this.todoService.todos.splice(index, 1);              //rimuove l'attività dall'array todos utilizzando l'indice trovato
+  if (index !== -1) {                                    //controlla se l'attività è stata trovata nell'array
+    this.todoService.todos[index].eliminata = true;      //imposta la proprietà eliminata su true
   }
   }
 

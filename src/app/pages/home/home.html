@@ -9,7 +9,7 @@
         }
         @else {
             <ul>
-            @for (todo of this.todoService.todos; track todo; let i = $index) {
+            @for (todo of this.todoService.OttieniAttivitaAttive(); track todo; let i = $index) {
                 <app-singola-attivita
                     [todo]="todo"       //serve a passare il todo corrente al componente figlio
                     (elimina)="rimuoviAttivita($event)" //serve a ricevere l'evento di eliminazione dal componente figlio e a chiamare la funzione rimuoviAttivita() nel componente padre

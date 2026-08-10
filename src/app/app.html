@@ -4,6 +4,7 @@
 
   <nav>
     <ul class="flex justify-center gap-4 m-4">
+
       <li>
         <a
         routerLink="/"
@@ -11,12 +12,21 @@
         [routerLinkActiveOptions]="{ exact: true }"
         class="bg-pink-100 p-2 rounded hover:bg-pink-300 text-medium focus:ring-2 focus:ring-pink-500">Home</a>
       </li>
+      
       <li>
         <a
         routerLink="/completate"
         routerLinkActive="bg-pink-300 font-bold"
         class="bg-pink-100 p-2 rounded hover:bg-pink-300 text-medium focus:ring-2 focus:ring-pink-500">Completate</a>
       </li>
+
+      <li>
+        <a
+        routerLink="/eliminate"
+        routerLinkActive="bg-pink-300 font-bold"
+        class="bg-pink-100 p-2 rounded hover:bg-pink-300 text-medium focus:ring-2 focus:ring-pink-500">Eliminate</a>
+      </li>
+
     </ul>
   </nav>
 

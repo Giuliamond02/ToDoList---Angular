@@ -6,7 +6,7 @@ import { RouterOutlet , RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Footer, Home, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, Header, Footer, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

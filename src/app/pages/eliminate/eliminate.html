@@ -1,1 +1,24 @@
-<p>eliminate works!</p>
+<div class=" flex flex-col gap-4 p-5 text-center items-center">
+
+    <div class="bg-gray-200 p-4 rounded-lg shadow-md w-full max-w-md">
+
+        <h4 class="text-3xl font-bold text-center">Attività eliminate</h4>
+
+        @if(this.todoService.OttieniAttivitaEliminate().length === 0){
+            <p>Non ci sono attività eliminate.</p>
+        }
+        @else {
+            <ul>
+            @for (todo of this.todoService.OttieniAttivitaEliminate(); track todo; let i = $index) {
+                <app-singola-attivita
+                    [todo]="todo"       //serve a passare il todo corrente al componente figlio
+                    [index]="i"         //serve a passare l'indice del todo corrente al componente figlio
+                >     
+                </app-singola-attivita>
+            }
+            </ul>
+        }
+
+    </div>
+
+</div>
