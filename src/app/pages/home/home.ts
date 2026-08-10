@@ -1,5 +1,5 @@
 import { Component, signal, inject } from '@angular/core';
-import { SingolaAttivita  } from '../singola-attivita/singola-attivita';
+import { SingolaAttivita  } from '../../components/singola-attivita/singola-attivita';
 import { FormsModule } from "@angular/forms";
 import { TodoService } from '../../todo-service';
 
@@ -28,8 +28,11 @@ export class Home {
     }
   }
 
-  rimuoviAttivita(index:number){                   //funzione per rimuovere un'attività dalla lista
-  this.todoService.todos.splice(index,1);          //con index passo l'indice del singolo elemnto dell'array da eliminare, con 1 indico che voglio eliminare un solo elemento
-}
+  rimuoviAttivita(todo  :any){                           //funzione per rimuovere un'attività dalla lista
+  const index = this.todoService.todos.indexOf(todo);    //trova l'indice dell'attività da rimuovere nell'array todos
+  if (index !== -1) {                                     //controlla se l'attività è stata trovata nell'array
+    this.todoService.todos.splice(index, 1);              //rimuove l'attività dall'array todos utilizzando l'indice trovato
+  }
+  }
 
 }

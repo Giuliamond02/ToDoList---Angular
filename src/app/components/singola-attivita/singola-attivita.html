@@ -3,7 +3,7 @@
     <input
         type="checkbox"
         (click)="toggleCheckbox()"
-        [checked]="todo.done"
+        [checked]="todo.done"       //serve a legare lo stato del checkbox alla proprietà done del todo corrente
     >
 
     <span [class.done]="todo.done">

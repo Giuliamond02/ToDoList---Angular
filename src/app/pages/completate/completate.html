@@ -1,0 +1,25 @@
+<div class=" flex flex-col gap-4 p-5 text-center items-center">
+
+    <div class="bg-gray-200 p-4 rounded-lg shadow-md w-full max-w-md">
+
+        <h4 class="text-3xl font-bold text-center">Attività completate</h4>
+
+        @if(this.todoService.OttieniAttivitaCompletate().length === 0){
+            <p>Non ci sono attività completate.</p>
+        }
+        @else {
+            <ul>
+            @for (todo of this.todoService.OttieniAttivitaCompletate(); track todo; let i = $index) {
+                <app-singola-attivita
+                    [todo]="todo"       //serve a passare il todo corrente al componente figlio
+                    [index]="i"         //serve a passare l'indice del todo corrente al componente figlio
+                    (elimina)="rimuoviAttivita($event)" //serve a ricevere l'evento di eliminazione dal componente figlio e a chiamare la funzione rimuoviAttivita() nel componente padre
+                >     
+                </app-singola-attivita>
+            }
+            </ul>
+        }
+
+    </div>
+
+</div>

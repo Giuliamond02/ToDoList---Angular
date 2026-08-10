@@ -9,4 +9,7 @@ export class TodoService {
     { text: "Utilizzare il routing in Angular", done: false }
     ];
 
+    OttieniAttivitaCompletate() {          //funzione per ottenere le attività completate
+        return this.todos.filter(todo => todo.done);   //ritorna un nuovo array contenente solo le attività completate (quelle con done impostato a true)
+    }
 }
