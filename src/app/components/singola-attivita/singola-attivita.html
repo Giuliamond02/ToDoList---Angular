@@ -1,0 +1,18 @@
+<li class="bg-gray-100 rounded-lg flex items-center justify-between p-3 m-2 border-b border-gray-300">
+
+    <input
+        type="checkbox"
+        (click)="toggleCheckbox()"
+        [checked]="todo.done"
+    >
+
+    <span [class.done]="todo.done">
+    {{todo.text}}
+    </span>
+
+    <button 
+        (click)="rimuoviAttivita()">
+        🗑️
+    </button>
+
+</li>
