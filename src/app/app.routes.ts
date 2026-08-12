@@ -12,5 +12,9 @@ export const routes: Routes = [
     {
         path: 'eliminate',
         loadComponent: () => import('./pages/eliminate/eliminate').then((c) => c.Eliminate),
+    },
+    {
+        path: 'prova-http',
+        loadComponent: () => import('./pages/prova-http/prova-http').then((c) => c.ProvaHttp),
     }
 ];

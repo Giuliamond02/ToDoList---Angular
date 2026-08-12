@@ -1,0 +1,47 @@
+<div class=" flex flex-col gap-4 p-5 text-center items-center">
+
+    <button
+        (click)="caricaTodo()"
+        class="bg-pink-100 p-2 rounded hover:bg-pink-300 text-medium focus:ring-2 focus:ring-pink-500 font-medium"
+        >
+        GET todos
+    </button>
+    
+    <div class="bg-gray-200 p-4 rounded-lg shadow-md w-full max-w-xl">
+
+        <h4 class="text-3xl font-bold text-center">{{title()}}</h4>
+
+        @if(this.todoService.todos.length === 0){
+            <p>Non ci sono attività da mostrare. Prova ad aggiungerne una!</p>
+        }
+        @else {
+            <ul>
+            @for (todo of this.todoService.OttieniAttivitaAttive(); track todo; let i = $index) {
+                <app-singola-attivita
+                    [todo]="todo"       //serve a passare il todo corrente al componente figlio
+                    (elimina)="rimuoviAttivita($event)" //serve a ricevere l'evento di eliminazione dal componente figlio e a chiamare la funzione rimuoviAttivita() nel componente padre
+                >     
+                </app-singola-attivita>
+            }
+            </ul>
+        }
+
+    </div>
+
+    <input 
+        type="text" 
+        placeholder="Inserisci una nuova attività" 
+        [(ngModel)]="newTodo"      //serve a legare il valore dell'input alla variabile newTodo del componente padre
+        class="border border-gray-300 rounded p-2 w-full max-w-md"
+    >
+
+    <button 
+        [disabled]="buttonDisabled()"
+        (click)="AggiungiAttivita()"
+        class = "bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded
+                disabled:bg-gray-500 disabled:cursor-not-allowed"
+    >
+        {{buttonText()}}
+    </button>
+
+</div>
