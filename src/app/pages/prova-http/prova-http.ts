@@ -19,10 +19,21 @@ export class ProvaHttp {
   todoService = inject(TodoService);       // Istanza del servizio TodoService che mi serve per inietttare l'array che è contenuto nel servizio in modo da usarlo in questo componente
   httpService = inject(HttpService);       // Istanza del servizio HttpService per effettuare chiamate HTTP
 
-  //--RICHESTA GET--
-  caricaTodo() {
-    this.httpService.caricaTodo().subscribe(risultato => {        // Dice ad HttpService di far partire la chiamata API
-      this.todoService.todos = risultato.map(todo => ({           // modifica il formato dei dati ottenuti dall'API nel formato adatto alla mia app e poi li mette nel TodoService, che ha il compito di mostrarli tramite prova-http.html
+  //--RICHESTA GET TUTTI I TODO--
+  caricaTuttiTodo() {
+    this.httpService.caricaTuttiTodo().subscribe(risultato => {        // Dice ad HttpService di far partire la chiamata API
+      this.todoService.todos = risultato.map(todo => ({               // modifica il formato dei dati ottenuti dall'API nel formato adatto alla mia app e poi li mette nel TodoService, che ha il compito di mostrarli tramite prova-http.html
+        text: todo.title,
+        done: todo.completed,
+        eliminata: false
+      }));
+    });
+  }
+
+  //--RICHIESTA GET TODO DELL'UTENTE CON ID 1--
+  caricaTodoUtente1() {
+    this.httpService.caricaTodoUtente1().subscribe(risultato => {        // Dice ad HttpService di far partire la chiamata API
+      this.todoService.todos = risultato.map(todo => ({                 // modifica il formato dei dati ottenuti dall'API nel formato adatto alla mia app e poi li mette nel TodoService, che ha il compito di mostrarli tramite prova-http.html
         text: todo.title,
         done: todo.completed,
         eliminata: false
