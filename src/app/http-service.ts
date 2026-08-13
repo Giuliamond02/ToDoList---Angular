@@ -2,6 +2,13 @@ import { Service } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 
+interface TodoApi {               //interfaccia per usare il formato richiesto dall'api
+    id: number;
+    title: string;
+    completed: boolean;
+    userId: number;
+    }
+
 @Service()
 export class HttpService {
 
@@ -9,11 +16,16 @@ export class HttpService {
 
     //--RICHESTA GET TUTTI I TODO--
     caricaTuttiTodo() {
-        return this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos?_limit=5');        //recupera i dati dall'API ma non li gestisce, li passa a prova-http in modo che possa trasformarli nel formato adatto
+        return this.http.get<TodoApi[]>('https://jsonplaceholder.typicode.com/todos?_limit=5');        //recupera i dati dall'API ma non li gestisce, li passa a prova-http in modo che possa trasformarli nel formato adatto
     }
 
     //--RICHIESTA GET TODO DELL'UTENTE CON ID 1--
     caricaTodoUtente1(){
-        return this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos?userId=1');       
+        return this.http.get<TodoApi[]>('https://jsonplaceholder.typicode.com/todos?userId=1');       
+    }
+
+    //--METODO POST PER AGGIUNGERE UN NUOVO TODO--
+    aggiungiToDo(todo : TodoApi){
+        return this.http.post<TodoApi>('https://jsonplaceholder.typicode.com/todos',todo);
     }
 }

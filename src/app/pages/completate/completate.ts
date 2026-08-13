@@ -11,11 +11,14 @@ import { SingolaAttivita  } from '../../components/singola-attivita/singola-atti
 export class Completate {
   todoService = inject(TodoService);
 
-  rimuoviAttivita(todo  :any){                           //funzione per rimuovere un'attività dalla lista
-  const index = this.todoService.todos.indexOf(todo);    //trova l'indice dell'attività da rimuovere nell'array todos
-  if (index !== -1) {                                    //controlla se l'attività è stata trovata nell'array
-    this.todoService.todos[index].eliminata = true;      //imposta la proprietà eliminata su true
-  }
+  rimuoviAttivita(todo: any) {                             //funzione per eliminare un'attività dalla lista
+    this.todoService.todos.update(todos => {               
+      const index = todos.indexOf(todo);                   //trova l'indice dell'attività
+      if (index !== -1) {                                  //controlla se l'attività è stata trovata nell'array
+        todos[index].eliminata = true;                     //imposta la proprietà eliminata su true
+      }
+      return todos;
+  })
   }
 }
 

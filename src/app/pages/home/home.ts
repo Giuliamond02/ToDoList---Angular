@@ -23,16 +23,19 @@ export class Home {
       return;                                       // Se il testo è vuoto o contiene solo spazi bianchi, non aggiungere l'attività
     }
     else {
-      this.todoService.todos.push({ text: testoPulito, done: false, eliminata: false });    // Aggiunge l'attività alla lista
-      this.newTodo.set('');                        // Svuota il campo di input dopo aver aggiunto l'attività
+      this.todoService.todos.update(todos => [...todos, { text: testoPulito, done: false, eliminata: false }]);    // Aggiunge l'attività in coda alla lista
+      this.newTodo.set('');                                          // Svuota il campo di input dopo aver aggiunto l'attività
     }
   }
 
-  rimuoviAttivita(todo  :any){                           //funzione per rimuovere un'attività dalla lista
-  const index = this.todoService.todos.indexOf(todo);    //trova l'indice dell'attività da rimuovere nell'array todos
-  if (index !== -1) {                                    //controlla se l'attività è stata trovata nell'array
-    this.todoService.todos[index].eliminata = true;      //imposta la proprietà eliminata su true
-  }
+  rimuoviAttivita(todo: any) {                             //funzione per eliminare un'attività dalla lista
+    this.todoService.todos.update(todos => {               
+      const index = todos.indexOf(todo);                   //trova l'indice dell'attività
+      if (index !== -1) {                                  //controlla se l'attività è stata trovata nell'array
+        todos[index].eliminata = true;                     //imposta la proprietà eliminata su true
+      }
+      return todos;
+  })
   }
 
 }

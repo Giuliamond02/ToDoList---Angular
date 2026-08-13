@@ -4,7 +4,7 @@
 
         <h4 class="text-3xl font-bold text-center">{{title()}}</h4>
 
-        @if(this.todoService.todos.length === 0){
+        @if(this.todoService.todos().length === 0){
             <p>Non ci sono attività da mostrare. Prova ad aggiungerne una!</p>
         }
         @else {
