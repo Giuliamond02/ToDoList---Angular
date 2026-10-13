@@ -8,5 +8,6 @@
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "La mia combinazione",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "La mia combinazione",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
-    }
+    },
+    "outputStyle": "default"
 }
